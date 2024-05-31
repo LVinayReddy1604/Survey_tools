@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Survey Results: {{ survey.title }}</h1>
+    <table>
+        <tr>
+            <th>Question</th>
+            <th>Response</th>
+        </tr>
+        {% for question in survey.questions %}
+            {% for response in question.responses %}
+                <tr>
+                    <td>{{ question.text }}</td>
+                    <td>{{ response.text }}</td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
+{% endblock %}

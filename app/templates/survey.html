@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ survey.title }}</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {% for question in survey.questions %}
+            <div>
+                <label>{{ question.text }}</label>
+                {% if question.type == 'text' %}
+                    <input type="text" name="question_{{ question.id }}">
+                {% elif question.type == 'multiple_choice' %}
+                    <input type="text" name="question_{{ question.id }}" placeholder="Enter your choice here">
+                {% endif %}
+            </div>
+        {% endfor %}
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

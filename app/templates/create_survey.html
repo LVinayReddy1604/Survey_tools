@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Create Survey</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.title.label }} {{ form.title(size=32) }}
+        </div>
+        <div>
+            {{ form.end_date.label }} {{ form.end_date }}
+        </div>
+        {% for i in range(1, 21) %}
+            <div>
+                {{ getattr(form, f'question_{i}_text').label }} {{ getattr(form, f'question_{i}_text') }}
+                {{ getattr(form, f'question_{i}_type').label }} {{ getattr(form, f'question_{i}_type') }}
+            </div>
+        {% endfor %}
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}
